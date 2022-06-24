@@ -1,6 +1,6 @@
-mod utils;
-
 use wasm_bindgen::prelude::*;
+
+mod utils;
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
 // allocator.
@@ -9,11 +9,7 @@ use wasm_bindgen::prelude::*;
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
 #[wasm_bindgen]
-extern {
-    fn alert(s: &str);
-}
-
-#[wasm_bindgen]
-pub fn greet() {
-    alert("Hello, wasm-wxa!");
+pub fn add(a: i32, b: i32) -> i32 {
+    utils::set_panic_hook();
+    a + b
 }
